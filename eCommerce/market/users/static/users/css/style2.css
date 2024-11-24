@@ -1,8 +1,8 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8; /* Fondo muy claro para contraste */
-    color: #333; /* Texto principal en un gris oscuro */
+    background-color: #f8f8f8; /* Fondo claro para mayor contraste */
+    color: #333; /* Texto en gris oscuro */
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,22 +12,22 @@ body {
 }
 
 /* Contenedor del formulario */
-.login-container {
+.register-container {
     background-color: #fff; /* Fondo blanco para el contenedor */
     border: 1px solid #ddd; /* Borde gris claro */
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 30px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px; /* Un poco más ancho para acomodar más campos */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 /* Título */
-.login-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #000; /* Negro puro para destacar */
+.register-container h2 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #000; /* Tono negro para destacar */
 }
 
 /* Formulario */
@@ -40,7 +40,7 @@ form input[type="email"],
 form input[type="password"],
 form input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc; /* Bordes gris claro */
     border-radius: 5px;
@@ -61,7 +61,7 @@ form input[type="text"]:focus {
 /* Botón */
 .btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #000; /* Negro puro */
     color: #fff; /* Texto blanco */
     border: none;
@@ -77,8 +77,8 @@ form input[type="text"]:focus {
     transform: translateY(-2px);
 }
 
-/* Enlace de registro */
-.login-container a {
+/* Enlace de inicio de sesión */
+.register-container a {
     color: #000; /* Negro puro */
     text-decoration: none;
     font-weight: bold;
@@ -86,13 +86,13 @@ form input[type="text"]:focus {
 }
 
 /* Hover en enlace */
-.login-container a:hover {
+.register-container a:hover {
     color: #555; /* Gris medio */
     text-decoration: underline;
 }
 
 /* Texto debajo del formulario */
-.login-container p {
+.register-container p {
     font-size: 14px;
     margin-top: 20px;
     color: #666; /* Gris claro */

@@ -1,0 +1,112 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Encabezado principal */
+.main-header {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.main-header .title {
+    font-size: 36px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.main-header .title span {
+    color: #ff6f61;
+}
+
+.main-header .description {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* Menú de navegación */
+.navbar {
+    background-color: #fff;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.navbar .menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar .menu li {
+    margin: 0 15px;
+}
+
+.navbar .menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.navbar .menu a:hover {
+    color: #ff6f61;
+    border-color: #ff6f61;
+}
+
+/* Contenido principal */
+.content {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .main-header .title {
+        font-size: 28px;
+    }
+
+    .navbar .menu {
+        flex-direction: column;
+    }
+
+    .navbar .menu li {
+        margin: 10px 0;
+    }
+
+    .content {
+        padding: 20px 10px;
+    }
+}

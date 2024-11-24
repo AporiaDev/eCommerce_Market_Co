@@ -1,14 +1,44 @@
 <!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    
+    <title>MARKETCO | Inicio</title>
+    <link rel="stylesheet" href="{% static 'home/css/style3.css' %}">
 </head>
 <body>
-    <h1>Bienvenido a la Página Principal</h1>
-    <a href="{% url 'login' %}">Iniciar Sesión</a>
-    <a href="{% url 'register' %}">Registrarse</a>
+    <!-- Encabezado -->
+    <header class="main-header">
+        <div class="container">
+            <h1 class="title">Bienvenido a <span>MARKET CO</span></h1>
+            <p class="description">
+                La mejor plataforma para comprar y vender artículos nuevos y usados. 
+                Encuentra lo que necesitas o da una segunda vida a tus productos.
+            </p>
+        </div>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="menu">
+                <li><a href="{% url 'register' %}">Registrarse</a></li>
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="content">
+        <div class="container">
+            <h2>Explora nuestras categorías</h2>
+            <p>
+                Navega por nuestra amplia selección de artículos y encuentra lo que buscas.
+                ¡Regístrate o inicia sesión para empezar a vender!
+            </p>
+        </div>
+    </main>
 </body>
 </html>
