@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import RegisterForm, LoginForm
+from django.http import HttpResponse
 
 def register_view(request):
     if request.method == 'POST':
@@ -21,7 +22,12 @@ def login_view(request):
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                if user.user_type=='vendedor':
+                    # return HttpResponse('Vendedor')
+                    return redirect('seller_dashboard')
+                else:
+                    return HttpResponse('otro')
+                    # return redirect('home')
             else:
                 form.add_error(None, 'Email o contraseña incorrectos')
     else:
