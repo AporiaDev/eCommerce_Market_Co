@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
+from django.contrib.auth import logout
 
 def seller_dashboard(request):
     if request.user.user_type!='vendedor':
@@ -22,9 +23,9 @@ def agregar_producto(request):
     return render(request,'vendedor/agregar.html',{'form':form})
 
 
-def editar_producto(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id, vendedor=request.user)
-    if request.method == 'POST':
+def editar_producto(request,producto_id):
+    producto=get_object_or_404(Producto,id=producto_id,vendedor=request.user)
+    if request.method=='POST':
         form = ProductoForm(request.POST,instance=producto)
         if form.is_valid():
             form.save()
@@ -40,3 +41,10 @@ def eliminar_producto(request, producto_id):
         producto.delete()
         return redirect('seller_dashboard')
     return render(request, 'vendedor/eliminar.html',{'producto':producto})
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('home')
+
+def cliente_dashboard(request):
+    pass
