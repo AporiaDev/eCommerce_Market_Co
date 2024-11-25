@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
+from users.models import User
 from .forms import ProductoForm
 from django.contrib.auth import logout
 
@@ -47,4 +48,25 @@ def cerrar_sesion(request):
     return redirect('home')
 
 def cliente_dashboard(request):
-    pass
+    if request.user.user_type != 'cliente':
+        return redirect('home')
+    productos_sale=Producto.objects.filter(stock__gt=0)
+    producto_vendedor=[]
+    for producto in productos_sale:
+        vendedor = User.objects.get(id=producto.vendedor_id)
+        producto_vendedor.append({'producto':producto,'vendedor_nombre':vendedor.first_name+' ' +vendedor.last_name})
+    context = {'producto_vendedor':producto_vendedor,'username':request.user.first_name+ ' ' +request.user.last_name}
+    return render(request, 'cliente/cliente_dashboard.html',context)
+
+def pasarela_pago(request,producto_id):
+    producto=get_object_or_404(Producto,id=producto_id)
+    producto.stock-=1
+    producto.save()
+    context={'producto':producto}
+    return render(request,'cliente/pasarela_pago.html',context)
+
+def abortar_comprar(request,producto_id):
+    producto=get_object_or_404(Producto,id=producto_id)
+    producto.stock+=1
+    producto.save()
+    return redirect('cliente_dashboard')

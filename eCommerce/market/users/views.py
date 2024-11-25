@@ -26,7 +26,7 @@ def login_view(request):
                     # return HttpResponse('Vendedor')
                     return redirect('seller_dashboard')
                 else:
-                    return HttpResponse('otro')
+                    return redirect('cliente_dashboard')
                     # return redirect('home')
             else:
                 form.add_error(None, 'Email o contraseña incorrectos')

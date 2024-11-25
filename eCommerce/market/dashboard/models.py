@@ -11,4 +11,3 @@ class Producto(models.Model):
     imagen_url=models.URLField(max_length=1024, blank=True, null=True)
     def __str__(self):
         return self.nombre
-
