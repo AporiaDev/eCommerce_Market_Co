@@ -11,27 +11,27 @@ def seller_dashboard(request):
 
 def agregar_producto(request):
     if request.method == 'POST':
-        form=ProductoForm(request.POST, request.FILES)
+        form=ProductoForm(request.POST)
         if form.is_valid():
             producto=form.save(commit=False)
-            producto.vendedor = request.user  # Asignar el vendedor actual al producto
+            producto.vendedor=request.user  #Asignar el vendedor actual al producto
             producto.save()
             return redirect('seller_dashboard')
     else:
         form=ProductoForm()
-    return render(request, 'vendedor/agregar_producto.html', {'form': form})
+    return render(request,'vendedor/agregar.html',{'form':form})
 
 
 def editar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id, vendedor=request.user)
     if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES, instance=producto)
+        form = ProductoForm(request.POST,instance=producto)
         if form.is_valid():
             form.save()
             return redirect('seller_dashboard')
     else:
         form = ProductoForm(instance=producto)
-    return render(request, 'vendedor/editar_producto.html', {'form': form})
+    return render(request,'vendedor/editar.html',{'form': form,'producto':producto})
 
 
 def eliminar_producto(request, producto_id):
@@ -39,4 +39,4 @@ def eliminar_producto(request, producto_id):
     if request.method=='POST':
         producto.delete()
         return redirect('seller_dashboard')
-    return render(request, 'vendedor/eliminar_producto.html',{'producto': producto})
+    return render(request, 'vendedor/eliminar.html',{'producto':producto})

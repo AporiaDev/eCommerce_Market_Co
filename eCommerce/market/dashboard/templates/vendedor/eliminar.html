@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Producto de tu tienda</title>
+</head>
+<body>
+    <h1>Eliminar Producto</h1>
+    <h2>¿Estás seguro de que deseas eliminar el producto "{{ producto.nombre }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" onclick="alert('Producto Eliminado con éxito')">Sí, eliminar</button>
+        <a href="{% url 'seller_dashboard' %}">Cancelar</a>
+</form>
+</body>
+</html>
