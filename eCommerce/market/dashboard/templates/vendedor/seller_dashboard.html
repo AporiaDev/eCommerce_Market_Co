@@ -1,21 +1,42 @@
-<h1>Dashboard del Vendedor</h1>
-<a href="{% url 'agregar_producto' %}">Agregar Producto</a>
-<table>
-    <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Acciones</th>
-    </tr>
-    {% for producto in productos %}
-    <tr>
-        <td>{{ producto.nombre }}</td>
-        <td>${{ producto.precio }}</td>
-        <td>{{ producto.stock }}</td>
-        <td>
-            <a href="{% url 'editar_producto' producto.id %}">Editar</a>
-            <a href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Dashboard del Vendedor</title>
+    </head>
+    <body>
+        <h1>MarketCO - Dashboard de Administración</h1>
+        <img src="{% static 'media/img1.png' %}" height="80" width="80">
+        <div>
+            <h2>Bienvenido {{username}}</h2>
+            <input type="button" id="goHome" value="Cerrar Sesión" onclick="console.log('xd')">
+        </div>
+        <a href="{% url 'agregar_producto' %}">Agregar un nuevo producto a tu catalogo</a>
+        <input type="button" value="Agregar Producto" onclick=window.location.href="{% url 'agregar_producto' %}" class="btn btn-primary">
+        {% if productos %}
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>${{ producto.precio }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>
+                        <a href="{% url 'editar_producto' producto.id %}">Editar</a>
+                        <a href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h3>No tienes productos en este momento 😁 , puedes agregar!!!</h3>
+        {% endif %}
+        <footer><p>MarketCO®️™️ todos los derechos reservados</p></footer>
+    </body>
+
+</html>

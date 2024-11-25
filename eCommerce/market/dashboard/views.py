@@ -6,7 +6,8 @@ def seller_dashboard(request):
     if request.user.user_type!='vendedor':
         return redirect('home')
     productos=Producto.objects.filter(vendedor=request.user)
-    return render(request,'vendedor/seller_dashboard.html',{'productos': productos})
+    context={'productos':productos,'username':request.user.first_name+' '+request.user.last_name}
+    return render(request,'vendedor/seller_dashboard.html',context)
 
 def agregar_producto(request):
     if request.method == 'POST':
@@ -30,12 +31,12 @@ def editar_producto(request, producto_id):
             return redirect('seller_dashboard')
     else:
         form = ProductoForm(instance=producto)
-    return render(request, 'dashboard/editar_producto.html', {'form': form})
+    return render(request, 'vendedor/editar_producto.html', {'form': form})
 
 
 def eliminar_producto(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id, vendedor=request.user)
-    if request.method == 'POST':
+    producto=get_object_or_404(Producto, id=producto_id, vendedor=request.user)
+    if request.method=='POST':
         producto.delete()
         return redirect('seller_dashboard')
-    return render(request, 'dashboard/eliminar_producto.html', {'producto': producto})
+    return render(request, 'vendedor/eliminar_producto.html',{'producto': producto})
